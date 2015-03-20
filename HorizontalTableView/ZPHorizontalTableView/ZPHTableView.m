@@ -62,14 +62,14 @@ static NSUInteger const ZPHTableViewDefaultNumberOfMoreCheckout = 40;
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-//        self.decelerationRate = UIScrollViewDecelerationRateFast;
+        self.decelerationRate = UIScrollViewDecelerationRateFast;
     }
     return self;
 }
 
 /** 加载数据 */
 - (void)reloadData {
-    NSLog(@"reloadData");
+//    NSLog(@"reloadData");
     //清除之前数据
     [self.displayingCells.allValues makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.displayingCells removeAllObjects];
@@ -105,8 +105,8 @@ CGFloat lastOffestX = 0;
     CGFloat offest = ABS(currentOffestX - lastOffestX);
     
     int count = offest / [self widthAtIndex:0];
-    if (count > 5) {
-        NSLog(@"offest count = %d", count);
+    if (count > 25) {
+        NSLog(@"scroll so fastest offest count = %d", count);
     }
     
     lastOffestX = currentOffestX;
@@ -229,7 +229,7 @@ CGFloat lastOffestX = 0;
 
 - (void)showItemAtIndex:(NSUInteger)index {
     if (self.cellFrames.count < index) {
-        NSLog(@"cellFrames.count = 0");
+        NSLog(@"error cellFrames.count = 0");
         return;
     }
     CGFloat offestX = 0;
